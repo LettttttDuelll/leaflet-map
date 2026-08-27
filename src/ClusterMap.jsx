@@ -28,9 +28,9 @@ L.Icon.Default.mergeOptions({
 // =======================================================
 // COMPONENT CHÍNH
 // =======================================================
-const ClusterMap = ({ 
-  containerHeight = '100vh', 
-  containerWidth = '100%' 
+const ClusterMap = ({
+  containerHeight = '100vh',
+  containerWidth = '100%'
 }) => {
   // Tọa độ trung tâm: UBND Thành phố Hồ Chí Minh
   const position = [10.7766, 106.7012];
@@ -56,11 +56,25 @@ const ClusterMap = ({
           {hcmcLocations.map((location) => (
             <Marker key={location.id} position={[location.lat, location.lng]}>
               <Popup>
-                <div style={{ minWidth: '150px' }}>
-                  <h4 style={{ margin: '0 0 5px 0', color: '#0056b3' }}>
+                <div style={{ width: '200px' }}>
+                  {/* Thẻ hiển thị hình ảnh */}
+                  {location.imageUrl && (
+                    <img
+                      src={location.imageUrl}
+                      alt={location.name}
+                      style={{
+                        width: '100%',
+                        height: '120px',
+                        objectFit: 'cover',
+                        borderRadius: '6px',
+                        marginBottom: '8px'
+                      }}
+                    />
+                  )}
+                  <h4 style={{ margin: '0 0 5px 0', color: '#0056b3', fontSize: '15px' }}>
                     {location.name}
                   </h4>
-                  <p style={{ margin: 0, fontSize: '13px' }}>
+                  <p style={{ margin: 0, fontSize: '12px', color: '#555' }}>
                     {location.address}
                   </p>
                 </div>
